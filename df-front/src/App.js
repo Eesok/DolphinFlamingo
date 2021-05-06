@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import data from './data';
+import Product from './components/Product';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 
@@ -22,38 +23,7 @@ function App() {
 				<div>
 					<div className='row center'>
 						{data.products.map((product) => (
-							<div key={product._id} className='card'>
-								<a href={`/product/${product._id}`}>
-									<img
-										className='medium'
-										src={product.image}
-										alt={product.name}
-									/>
-								</a>
-								<div className='card-body'>
-									<a href={`/product/${product._id}`}>
-										<h2>{product.name}</h2>
-									</a>
-									<div className='rating'>
-										<span>
-											<i className='fa fa-star'></i>
-										</span>
-										<span>
-											<i className='fa fa-star'></i>
-										</span>
-										<span>
-											<i className='fa fa-star'></i>
-										</span>
-										<span>
-											=<i className='fa fa-star'></i>=
-										</span>
-										<span>
-											<i className='fa fa-star'></i>=
-										</span>
-									</div>
-									<div className='price'>${product.price}</div>
-								</div>
-							</div>
+							<Product key={product._id} product={product}></Product>
 						))}
 					</div>
 				</div>
