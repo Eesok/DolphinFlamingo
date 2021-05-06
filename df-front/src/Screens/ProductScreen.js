@@ -1,39 +1,62 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import data from '../data';
+import { Link } from 'react-router-dom';
+import Product from '../components/Product';
+import Rating from '../components/Rating';
 
-function ProductScreen(props) {
-	console.log(props.match.params.id);
-	const product = data.products.find((x) => x._id == props.match.params.id);
-	console.log(data.products);
+export default function ProductScreen(props) {
+	const product = data.products.find((x) => x._id === props.match.params.id);
+	if (!product) {
+		return <div> Product Not Found</div>;
+	}
 	return (
 		<div>
-			<div>
-				<Link to='/'>Back to result</Link>
-			</div>
-			<div className='details'>
-				<div className='details-image'>
-					<img src={product.image} alt='product'></img>
+			<Link to='/'>Back to result</Link>
+			<div className='row top'>
+				<div className='col-2'>
+					<img className='large' src={product.image} alt={product.name}></img>
 				</div>
-				<div className='details-info'>
+				<div className='col-1'>
 					<ul>
 						<li>
-							<h4>{product.name}</h4>
+							<h1>{product.name}</h1>
 						</li>
 						<li>
-							{product.rating} Stars ({product.numReviews} Reviews)
+							<Rating
+								rating={product.rating}
+								numReviews={product.numReviews}></Rating>
 						</li>
-						<li>
-							<b>{product.price}</b>
-						</li>
+						<li>Price: ${product.price}</li>
 						<li>
 							Description:
-							<div>{product.description}</div>
+							<p>{product.description}</p>
 						</li>
 					</ul>
+				</div>
+				<div className='col-1'>
+					<div className='card card-body'>
+						<ul>
+							<li>
+								<div>Price</div>
+								<div className='price'>${product.price}</div>
+							</li>
+							<li>
+								<div>Status</div>
+								<div>
+									{product.countInStock > 0 ? (
+										<span className='success'>In Stock</span>
+									) : (
+										<span className='danger'>Unavailable</span>
+									)}
+								</div>
+							</li>
+							<li>
+								<button className='primary block'>Add to Cart</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	);
 }
-export default ProductScreen;
