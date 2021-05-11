@@ -1,4 +1,4 @@
-const data = {
+const _data = {
 	products: [
 		{
 			_id: '1',
@@ -74,4 +74,4 @@ const data = {
 		},
 	],
 };
-export default data;
+export default _data;
