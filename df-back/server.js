@@ -7,6 +7,10 @@ app.get('/api/products', (req, res) => {
 	res.send(data.products);
 });
 
+app.get('/api/products', (req, res) => {
+	res.send(data.products);
+});
+
 app.get('/', (req, res) => {
 	res.send('Server is ready');
 });
