@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch df-back --exec node --experimental-modules df-back/server.js"
+    "build": "cd frontend && npm install && npm run build",
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,22 @@
   },
   "homepage": "https://github.com/Eesok/DolphinFlamingo#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^5.12.13",
+    "multer": "^1.4.2",
+    "socket.io": "^4.1.2"
   },
   "devDependencies": {
     "eslint": "^7.26.0",
     "eslint-plugin-react": "^7.23.2",
     "nodemon": "^2.0.7"
+  },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
